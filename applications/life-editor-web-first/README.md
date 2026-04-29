@@ -19,6 +19,21 @@ life-editor を Tauri から **Vite + React + TypeScript + Supabase + Capacitor*
 - 概念の名前を先に教え、後から具体実装を見る("名前を知ってから手を動かす"順)
 - 詰まったら 1 段下げる、スラスラなら 1 段上げる
 
+## 関連ジャンル
+
+各 Phase でどのジャンル（`~/dev/learning/<genre>/`）の概念を使うか:
+
+| ジャンル                   | この application で扱う部分                                             |
+| -------------------------- | ----------------------------------------------------------------------- |
+| `../../ui-rendering/`      | React のコンポーネントツリー / 仮想 DOM / Tailwind スタイリング         |
+| `../../state-and-time/`    | useState / useReducer / 楽観的 UI / Realtime 同期での race condition    |
+| `../../persistence/`       | Supabase（PostgreSQL ベース）/ SDK 経由 CRUD / RLS                      |
+| `../../auth-trust/`        | Supabase Auth（Email / Magic Link / Apple Sign-in）                     |
+| `../../network-and-async/` | Supabase Realtime（WebSocket + CDC）/ async-await / TanStack Query 候補 |
+| `../../infra-and-deploy/`  | Capacitor で iOS / Android 化 / Vercel / Cloudflare 等のホスティング    |
+
+未学習ジャンルがある場合、各ジャンルの `00-concept/overview.md` だけでも先に読むことを推奨。
+
 ## 学習トピック
 
 | #   | トピック                                                                 | 対象                                    | 期間目安  | 状態   |
@@ -36,9 +51,10 @@ life-editor を Tauri から **Vite + React + TypeScript + Supabase + Capacitor*
 
 ## ハンズオン用コードの置き場
 
-`~/dev/learning/web-first-spike-1/` (このリポジトリ外) に Day 1-3 で実際の Vite プロジェクトを作る。教材(本ディレクトリ)とコード(spike ディレクトリ)を分けて、教材は git 管理しない。
+`~/dev/learning/applications/_spikes/web-first-spike-1/` に Day 1-3 で実際の Vite プロジェクトを作る。教材(本ディレクトリ)とコード(spike ディレクトリ)を分けて、責務を明確にする。両方とも git 管理対象（`node_modules/` のみ ignore）。
 
 ## 関連ドキュメント
 
+- 学習ワークスペース全体: `~/dev/learning/.claude/CLAUDE.md`（ジャンル一覧・学習原則）
 - 移行プラン本体: `~/dev/apps/life-editor/.claude/2026-04-29-web-first-migration.md`
 - 学習ブランチ: `refactor/web-first-v2`(life-editor 側)
