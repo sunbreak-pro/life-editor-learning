@@ -18,6 +18,7 @@
 
 ## 直近完了
 
+- **2026-05-02** `applications/study-board/` 着手（Trello 風 Kanban で JS/React 基礎を体得する学習プロジェクト、Vite + React 素 JS、option (ii) ヒント方式、`.claude/` ツリー構築済、Phase 1 MVP 着手前）。`applications/README.md` の規約に「コード + 教材同居型」を追加
 - **2026-04-29** ~/dev/learning/ ワークスペース整備（`.claude/` 初期化、ジャンル別ディレクトリ骨組み生成、既存資産を `applications/` 配下へ移動）
 
 ---
