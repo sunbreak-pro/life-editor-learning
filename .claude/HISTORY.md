@@ -4,6 +4,8 @@
 
 ---
 
+- 2026-04-30: [途中] data-modeling ジャンル学習 — `00-concept/overview.md` + `01-implementation/walkthrough.md` + `code/walkthrough.sql` 完成。重複再現 → 外部キー → `IN (SELECT)` → OR/JOIN/EXISTS → NULL 三値論理まで通過。詳細は `data-modeling/_log/2026-04-30-walkthrough.md`。次回は §9 復習問題のフィードバック → `quiz/01-recall-basic.md` 作成 → `key-terms.md`。
+
 ### 2026-04-29 — Workspace 初期化
 
 #### 概要

@@ -1,56 +1,27 @@
-# MEMORY.md - 学習進捗
-
-> 進行中・直近完了・予定の学習トピックを管理する。task-tracker スキルが更新する。手動編集は最小限に。
-
----
-
-## 現在の学習フェーズ
-
-ジャンル別カリキュラム整備中（2026-04-29 〜）。最初の本格学習は `data-modeling/` から開始予定。
-
----
+# MEMORY.md - タスクトラッカー
 
 ## 進行中
 
-（なし — ジャンル骨組み整備が完了次第、最初のトピックを登録する）
+### ⏸️ data-modeling ジャンル学習（着手日: 2026-04-30）
 
----
+**対象**: `~/dev/learning/data-modeling/`
 
-## 直近完了
+- 前回: `00-concept/overview.md` 作成（リレーショナルモデル誕生 / 動機 3 つ = データ独立性 + 整合性 + 宣言的クエリ / 用語 5 個導入）
+- 現在: `01-implementation/walkthrough.md` + `code/walkthrough.sql` 完成（Phase 1-6: 重複再現 → 外部キー → `IN (SELECT)` → IN 以外 OR/JOIN/EXISTS → NULL 三値論理）。ユーザーが SQL 実行 + §9 復習問題に取り組む段階で一旦区切り
+- 次: 引っかかり解消の対話 → `quiz/01-recall-basic.md` + `.answer.md` → `00-concept/key-terms.md`（残り用語: 正規形 / カーディナリティ / インデックス）→ `02-comparison/` で MongoDB / Neo4j と並列比較
+
+## 直近の完了
 
 - **2026-05-02** `applications/study-board/` 着手（Trello 風 Kanban で JS/React 基礎を体得する学習プロジェクト、Vite + React 素 JS、option (ii) ヒント方式、`.claude/` ツリー構築済、Phase 1 MVP 着手前）。`applications/README.md` の規約に「コード + 教材同居型」を追加
-- **2026-04-29** ~/dev/learning/ ワークスペース整備（`.claude/` 初期化、ジャンル別ディレクトリ骨組み生成、既存資産を `applications/` 配下へ移動）
-
----
+- ~/dev/learning/ ワークスペース整備（`.claude/` 初期化、8 ジャンル骨組み、`applications/` 配下へ既存資産移動、code-teacher SKILL.md 更新）✅（2026-04-29）
 
 ## 予定
 
-### 短期（今月中）
-
-- [ ] `data-modeling/` 概念学習（リレーショナルモデルの根本、なぜテーブル / 行 / 列 / 主キー / 外部キーで世界を表現できるのか）
-- [ ] `persistence/` 概念学習（ACID、トランザクション、SQL の宣言的特性 vs 命令的言語）
-- [ ] `ui-rendering/` 概念学習（仮想 DOM が解こうとした問題、Reconciliation、コンポーネント志向の起源）
-
-### 中期（2-3 ヶ月）
-
-- [ ] `state-and-time/`（楽観的 UI、race condition、Realtime Sync の難しさ）
-- [ ] `network-and-async/`（async/await の仕組み、HTTP の意味論、WebSocket vs SSE vs Polling）
-- [ ] `auth-trust/`（OAuth が何を解決したか、JWT の落とし穴、RBAC vs ABAC）
-
-### 長期（応用層への合流）
-
-- [ ] `applications/life-editor-web-first/` を再開する前に上記 6 ジャンルを通っておく
-
----
-
-## 仮説・現在の問い
-
-- 「**サービスごとの差別化を理解する**」のは、概念を共有 LTM に固定する最良の方法か？（Variation Theory の予測通りなら yes）
-- ジャンル内のクイズは、コードレベル（穴埋め）と概念レベル（自由記述）のどちらが先に効くか？
-- 「分散復習」を Markdown だけで運用するのは現実的か？（Anki に流す方が良いか）
-
----
-
-## 暫定的な知見
-
-（学習を始めたら追記）
+- `persistence/` 概念学習（ACID / トランザクション / 分離レベル / SQL の宣言性）
+- `ui-rendering/` 概念学習（仮想 DOM が解こうとした問題 / Reconciliation / コンポーネント志向の起源）
+- `state-and-time/` 概念学習（楽観的 UI / race condition / Realtime Sync / CRDT）
+- `network-and-async/` 概念学習（async-await / HTTP 意味論 / WebSocket vs SSE vs Polling）
+- `auth-trust/` 概念学習（OAuth / JWT / RBAC / RLS / OWASP）
+- `testing-and-quality/` 概念学習（Vitest / Playwright / TDD / 静的解析）
+- `infra-and-deploy/` 概念学習（Container / Edge / CI/CD / Capacitor）
+- `applications/life-editor-web-first/` 再開（上記 7 ジャンル通過後）
