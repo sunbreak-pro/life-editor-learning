@@ -8,7 +8,7 @@
 
 ## Monitoring（要観察）
 
-（なし）
+- [001 commit/staging 前のブランチ確認漏れ](./001-pre-commit-branch-verification.md) — セッション間で git state が変わり、想定外のブランチに 2 commit が落ちた。復旧済みだが再発しうるパターン。
 
 ## Resolved（解消済み）
 
