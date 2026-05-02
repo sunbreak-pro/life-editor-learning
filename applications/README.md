@@ -22,8 +22,17 @@ applications/
 
 ## 命名ルール
 
-- `<app-name>/`: 教材だけ。Markdown 中心。git 管理。
-- `_spikes/<spike-name>/`: 動くプロジェクトコード（`package.json` あり）。`node_modules/` は ignore。
+3 種類のレイアウトを許容する。プロジェクトの性質で選ぶ：
+
+- **教材分離型** `<app-name>/`: 教材だけ（Markdown 中心）。動くコードは `_spikes/<name>/` に分離する。`life-editor-web-first/` がこの型。
+- **動くコード単独型** `_spikes/<spike-name>/`: 教材を伴わない検証用コード（`package.json` あり）。`node_modules/` は ignore。
+- **コード + 教材同居型** `<app-name>/`: アプリ自体が学習対象 + 学習を支える道具を兼ねるドッグフード型。コード（`package.json`）と教材（`.claude/docs/`）を同じディレクトリに置く。`study-board/` がこの型。
+
+### 同居型を選ぶ判断基準
+
+- コードと学習ノートを分離するメリットが薄い（ドッグフード型）
+- 単一プロジェクトに閉じた小規模学習で、`_spikes/` を別途用意する認知負荷の方が大きい
+- 上記に当てはまらないなら **教材分離型**（既存 `life-editor-web-first/` と同様）を選ぶ
 
 ## ジャンルとの結びつけ
 
@@ -44,9 +53,10 @@ applications/
 
 ## 現在の applications
 
-| 名前                     | 状態   | 関連ジャンル                                                            |
-| ------------------------ | ------ | ----------------------------------------------------------------------- |
-| `life-editor-web-first/` | 進行中 | `ui-rendering/` / `persistence/` / `auth-trust/` / `network-and-async/` |
+| 名前                     | 型                  | 状態   | 関連ジャンル                                                            |
+| ------------------------ | ------------------- | ------ | ----------------------------------------------------------------------- |
+| `life-editor-web-first/` | 教材分離型          | 進行中 | `ui-rendering/` / `persistence/` / `auth-trust/` / `network-and-async/` |
+| `study-board/`           | コード + 教材同居型 | 着手中 | `ui-rendering/` / 言語土台（独立ジャンル化していないため事実上の入口）  |
 
 ## Spikes
 
