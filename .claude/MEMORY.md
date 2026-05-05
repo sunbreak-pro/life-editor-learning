@@ -7,11 +7,12 @@
 **対象**: `~/dev/learning/data-modeling/`
 
 - 前回: `00-concept/overview.md` 作成（リレーショナルモデル誕生 / 動機 3 つ = データ独立性 + 整合性 + 宣言的クエリ / 用語 5 個導入）
-- 現在: `01-implementation/walkthrough.md` + `code/walkthrough.sql` 完成（Phase 1-6: 重複再現 → 外部キー → `IN (SELECT)` → IN 以外 OR/JOIN/EXISTS → NULL 三値論理）。ユーザーが SQL 実行 + §9 復習問題に取り組む段階で一旦区切り
-- 次: 引っかかり解消の対話 → `quiz/01-recall-basic.md` + `.answer.md` → `00-concept/key-terms.md`（残り用語: 正規形 / カーディナリティ / インデックス）→ `02-comparison/` で MongoDB / Neo4j と並列比較
+- 現在: `01-implementation/walkthrough.md` + `code/walkthrough.sql` 完成（Phase 1-6: 重複再現 → 外部キー → `IN (SELECT)` → IN 以外 OR/JOIN/EXISTS → NULL 三値論理）。SQLite サンドボックス（`sqlite/`）整備済み、ユーザーが Phase 1〜 実行に着手する段階で一旦区切り
+- 次: SQL 実行で引っかかった点の対話解消 → `quiz/01-recall-basic.md` + `.answer.md` → `00-concept/key-terms.md`（残り用語: 正規形 / カーディナリティ / インデックス）→ `02-comparison/` で MongoDB / Neo4j と並列比較
 
 ## 直近の完了
 
+- **2026-05-05** `sqlite/` 学習サンドボックス整備（`playground/` + `db/` 構成、`.gitignore` に SQLite 系拡張子 6 種追加、README で起動・命名規則を整理）✅
 - **2026-05-02** `applications/study-board/` 着手（Trello 風 Kanban で JS/React 基礎を体得する学習プロジェクト、Vite + React 素 JS、option (ii) ヒント方式、`.claude/` ツリー構築済、Phase 1 MVP 着手前）。`applications/README.md` の規約に「コード + 教材同居型」を追加
 - ~/dev/learning/ ワークスペース整備（`.claude/` 初期化、8 ジャンル骨組み、`applications/` 配下へ既存資産移動、code-teacher SKILL.md 更新）✅（2026-04-29）
 

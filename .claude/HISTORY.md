@@ -4,6 +4,21 @@
 
 ---
 
+### 2026-05-05 — SQLite 学習サンドボックス整備
+
+#### 概要
+
+`data-modeling` ジャンルの walkthrough.sql を実機で動かすための専用ワークスペースとして `sqlite/` を新設。教材ファイルとは分離し、ユーザーが自分で書く SQL と SQLite が生成する DB ファイルを git 管理ポリシー込みで扱える構成にした。`data-modeling` 学習自体は引き続き ⏸️。
+
+#### 変更点
+
+- **ディレクトリ追加**: トップレベルに `sqlite/` を新設し、`playground/`（自分で書く `.sql`、track 対象）と `db/`（生成 DB、ignore 対象）に分離
+- **README**: 起動コマンド・表示モード設定（`.headers on` / `.mode column`）・`.read` vs バッチ実行・命名規則・注意点を 1 枚にまとめた
+- **.gitignore 拡張**: `*.db` / `*.db-journal` / `*.db-shm` / `*.db-wal` / `*.sqlite` / `*.sqlite3` を除外パターンに追加（`.sql` は track 対象に維持）
+- **配置判断**: `data-modeling/` 配下に閉じ込めず top-level に置くことで、persistence / auth-trust など複数ジャンルから再利用できる構成にした
+
+---
+
 - 2026-04-30: [途中] data-modeling ジャンル学習 — `00-concept/overview.md` + `01-implementation/walkthrough.md` + `code/walkthrough.sql` 完成。重複再現 → 外部キー → `IN (SELECT)` → OR/JOIN/EXISTS → NULL 三値論理まで通過。詳細は `data-modeling/_log/2026-04-30-walkthrough.md`。次回は §9 復習問題のフィードバック → `quiz/01-recall-basic.md` 作成 → `key-terms.md`。
 
 ### 2026-04-29 — Workspace 初期化
