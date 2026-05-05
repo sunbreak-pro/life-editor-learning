@@ -25,14 +25,14 @@ PRAGMA foreign_keys = ON;  -- SQLite はデフォルト OFF。明示的に有効
 CREATE TABLE tasks_v1 (
   id            INTEGER PRIMARY KEY,
   title         TEXT NOT NULL,
-  assignee_name TEXT  -- ← 担当者名を直接持つ。これが今回の罠
+  assignee_name TEXT 
 );
 
 INSERT INTO tasks_v1 (id, title, assignee_name) VALUES
   (1, 'Phase 0 整理',     'Taro'),
   (2, 'Phase 1 設計',     'Taro'),
   (3, 'Phase 1 実装',     'Hanako'),
-  (4, 'Phase 2 移行',     'taro'),    -- typo（小文字）
+  (4, 'Phase 2 移行',     'taro'),
   (5, 'Phase 2 リリース', 'Tarou');   -- 改名後の名前を勝手に書いた
 
 
