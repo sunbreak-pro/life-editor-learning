@@ -2,19 +2,28 @@
 
 ## 進行中
 
+### 🔧 SQL 構文流暢性トラック（着手日: 2026-05-05）
+
+**対象**: `~/dev/learning/00-foundations/sql-syntax/`
+**計画書**: `.claude/2026-05-05-sql-fluency-track.md`
+
+- 前回: —
+- 現在: 設計書作成完了（5 トピック構成: 01-crud / 02-aggregate / 03-join / 04-subquery / 05-utility、各 intro.md + examples.sql + exercises.sql + .answer.sql の 4 ファイル構成）。学習者の COUNT(\*) vs COUNT(col) 誤解を 02-aggregate の最重要課題に位置づけ
+- 次: `00-foundations/sql-syntax/README.md` 作成 → トピック 01 CRUD 着手（intro.md → examples.sql → exercises.sql + .answer.sql → quiz）
+
 ### ⏸️ data-modeling ジャンル学習（着手日: 2026-04-30）
 
 **対象**: `~/dev/learning/data-modeling/`
 
-- 前回: `00-concept/overview.md` 作成（リレーショナルモデル誕生 / 動機 3 つ = データ独立性 + 整合性 + 宣言的クエリ / 用語 5 個導入）
-- 現在: `01-implementation/walkthrough.md` + `code/walkthrough.sql` 完成（Phase 1-6: 重複再現 → 外部キー → `IN (SELECT)` → IN 以外 OR/JOIN/EXISTS → NULL 三値論理）。SQLite サンドボックス（`sqlite/`）整備済み、ユーザーが Phase 1〜 実行に着手する段階で一旦区切り
-- 次: SQL 実行で引っかかった点の対話解消 → `quiz/01-recall-basic.md` + `.answer.md` → `00-concept/key-terms.md`（残り用語: 正規形 / カーディナリティ / インデックス）→ `02-comparison/` で MongoDB / Neo4j と並列比較
+- 前回: Phase 3 前提概念の対話確認完了（UNIQUE と collation / UPDATE vs ALTER / NOT NULL カラム追加の矛盾）。学習者は (C) 「ALTER 失敗」を正答
+- 現在: Phase 3〜6 の SQL 実行は SQL 構文流暢性トラック（01-crud + 03-join）通過後に再開する方針。walkthrough.md / code/walkthrough.sql は完成済み
+- 次: SQL 構文流暢性トラックで CRUD + JOIN を流暢に書けるようになってから Phase 3 着手 → `quiz/01-recall-basic.md` → `00-concept/key-terms.md` → `02-comparison/`
 
 ## 直近の完了
 
+- **2026-05-05** SQL 構文流暢性トラック設計書作成 + data-modeling Phase 3 前提概念の対話確認（UNIQUE/collation, UPDATE vs ALTER, NOT NULL 追加時の矛盾）。学習者の COUNT(\*) vs COUNT(col) 誤解を発見し、設計書で誤解解消を最優先課題に位置づけ ✅
 - **2026-05-05** `sqlite/` 学習サンドボックス整備（`playground/` + `db/` 構成、`.gitignore` に SQLite 系拡張子 6 種追加、README で起動・命名規則を整理）✅
 - **2026-05-02** `applications/study-board/` 着手（Trello 風 Kanban で JS/React 基礎を体得する学習プロジェクト、Vite + React 素 JS、option (ii) ヒント方式、`.claude/` ツリー構築済、Phase 1 MVP 着手前）。`applications/README.md` の規約に「コード + 教材同居型」を追加
-- ~/dev/learning/ ワークスペース整備（`.claude/` 初期化、8 ジャンル骨組み、`applications/` 配下へ既存資産移動、code-teacher SKILL.md 更新）✅（2026-04-29）
 
 ## 予定
 

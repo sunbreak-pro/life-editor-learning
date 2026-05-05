@@ -4,6 +4,28 @@
 
 ---
 
+### 2026-05-05 — SQL 構文流暢性トラック設計 + data-modeling Phase 3 前提概念整理
+
+#### 概要
+
+data-modeling Phase 3 着手前の前提概念を学習者と対話で確認し、SQL に関する 3 つの曖昧領域（UNIQUE と collation / UPDATE vs ALTER の DDL/DML 分離 / NOT NULL カラム追加時の矛盾）を解消した。同時に学習者から「概念だけでなく SQL の書き方や工夫の仕方をもっと学びたい」「サブクエリ・JOIN・基礎 CRUD が曖昧」「COUNT(\*) と COUNT(カラム名) を表示形式の違いと誤解している」という要望を受け、ジャンル横断の前提層として SQL 構文流暢性トラック（`00-foundations/sql-syntax/`）を新設する設計書を作成した。
+
+#### 変更点
+
+- **対話で解消した概念 3 件**:
+  - UNIQUE と collation（SQLite デフォルト BINARY では 'Taro' と 'taro' は別物として共存可能、`COLLATE NOCASE` で同一視）
+  - UPDATE と ALTER TABLE の意図的分離（DML vs DDL）。SQLite の ALTER TABLE は 4 操作のみ（RENAME TABLE / ADD COLUMN / RENAME COLUMN / DROP COLUMN）、型・PK・UNIQUE 変更は「テーブル作り直し」が必要
+  - NOT NULL カラムを既存データに ADD COLUMN すると失敗する理由（既存行が NULL になる矛盾）。回避策は `DEFAULT` 併記。学習者は (C) 「失敗する」を正答
+- **誤解の発見**: 学習者は `COUNT(*)` と `COUNT(カラム名)` の差を「表示形式の違い（NULL は空白 / INTEGER は 0）」と誤認識。実際は「何を数えるか」の違い（`*` は全行 / `col` は NULL でない行）
+- **設計書作成**: `.claude/2026-05-05-sql-fluency-track.md`（Status: ACTIVE）
+  - 配置: ジャンル横断の `00-foundations/sql-syntax/` を新設（data-modeling と persistence の両方から再利用可能）
+  - 構成: 5 トピック（01-crud / 02-aggregate / 03-join / 04-subquery / 05-utility）、各トピック intro.md + examples.sql + exercises.sql + .answer.sql の 4 ファイル
+  - 学習科学原則の対応表を組み込み（想起練習 / 分散復習 / Worked Example / Self-Explanation / Generation Effect）
+  - 02-aggregate を「COUNT 誤解解消の最重要課題」として位置づけ
+- **進行方針の変更**: data-modeling Phase 3〜6 の SQL 実行は ⏸️ 維持。SQL 構文流暢性トラックの 01-crud と 03-join を完了してから Phase 3 に再着手する順序に切り替え
+
+---
+
 ### 2026-05-05 — SQLite 学習サンドボックス整備
 
 #### 概要
