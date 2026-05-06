@@ -4,6 +4,10 @@
 
 ---
 
+- 2026-05-05: [途中] JS 構文流暢性トラック — `00-foundations/javascript/` ジャンル新設（README に 8 つの柱マップ・Java/TS 比較スタンス・Dreyfus 到達基準・アプリ駆動運用方針）。study-board `docs/code-explanation/01-vite-scaffold-tour.md`（main.jsx 統合解読、ESM import 3 形式 + DOM API + メソッドチェーン + JSX + trailing comma + StrictMode、Java/TS 比較と Self-Explanation Prompt 併設）完成。auto-memory に「学習教材は統合文書を好む」「学習者は研修中で Java 先行学習予定」を保存。次は App.jsx tour または Active Recall。
+
+---
+
 ### 2026-05-05 — SQL 構文流暢性トラック設計 + data-modeling Phase 3 前提概念整理
 
 #### 概要

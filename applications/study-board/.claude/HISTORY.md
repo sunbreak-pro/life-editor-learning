@@ -4,6 +4,10 @@
 
 ---
 
+- 2026-05-05: [途中] Phase 1.0 Vite 雛形を一緒に眺める — `main.jsx` の統合解読文書 `docs/code-explanation/01-vite-scaffold-tour.md` 完成（4 ブロック構造、ESM import 3 形式、DOM API、メソッドチェーン、JSX、trailing comma、StrictMode、各節に Java/TS 比較と Self-Explanation Prompt 併設）。並行して `~/dev/learning/00-foundations/javascript/` ジャンルを新設（README に 8 つの柱マップ）。次は App.jsx tour または §8 Active Recall。
+
+---
+
 ## 2026-05-02 — プロジェクト初期化
 
 - Vite + React (素の JS) で雛形生成

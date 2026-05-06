@@ -8,7 +8,7 @@
 
 - **役割**: 進行中の現状規約・進捗 SSOT。設計判断・抽象構想は `docs/vision/` に分離
 - **学習者レベル**: JS 完全初学者から再スタート。CSS は少し触れる程度
-- **学習スタイル**: option (ii) **ヒントだけ出す → 学習者が書く → Claude がレビュー**。Claude は勝手に実装を進めない
+- **学習スタイル**: option (i) **Claude が書く → 学習者が読む / 質問する / 必要なら微修正**（2026-05-06 に option (ii) から変更）。コードには WHY コメントを十分に入れる。新規概念は実装前に簡単な解説。
 - **更新規則**: 実装変更を伴う変更はコードと同一コミットで本ファイルを更新
 
 ### 関連ドキュメント
@@ -30,8 +30,13 @@
 
 詳細 → `docs/vision/core.md`
 
-- **問い**: 「`reduce` を毎回ググる」「state 更新が反映されない」を **自分の言葉で説明できる** ようになる
-- **戦略**: Trello 風 Kanban を React で実装しながら、詰まる度に学習トピックを記録する（アプリ自体が学習対象 + 学習を支える道具のドッグフード）
+- **問い**: 「`reduce` を毎回ググる」「state 更新が反映されない」を **自分の言葉で説明できる** ようになる + 自分の勉強進捗を「次に何をやるか」レベルで一目で見える化する
+- **対象ドメイン**: プログラミング学習 + その他の勉強（資格 / 本 / 語学 等）— カードに `category` を持たせ両立
+- **戦略**: 学習者本人の勉強ダッシュボードをドッグフード開発しながら、詰まる度に学習トピックを記録する（アプリ自体が学習対象 + 学習を支える道具）
+- **主要ビュー**（段階導入）:
+  - Phase 1: **Kanban**（未学習 / 学習中 / 完了）+ カテゴリフィルタ + 完了率バー
+  - Phase 2: **Roadmap / Tree view**（親子関係で階層表示）
+  - Phase 3: **高度ダッシュボード** / メモ / 検索
 - **non-Goals**: 美しい UI、テスト網羅、本番デプロイ
 - **将来 (Phase 4)**: MCP サーバ連携で Claude が学習トピックを直接操作できる構成へ
 
@@ -41,26 +46,49 @@
 
 - **Build**: Vite 7
 - **Framework**: React 19
-- **Language**: 素の JavaScript（TypeScript は使わない / 型レイヤーは Phase 2 以降の選択肢）
+- **Language**: 素の JavaScript（TypeScript は使わない / 型レイヤーは別ジャンル `testing-and-quality/` で扱う）
 - **Style**: Vanilla CSS（CSS モジュール / Tailwind は使わない）
-- **永続化**: Phase 2 で `localStorage`、外部化は Phase 3 以降で検討
+- **永続化**: **Phase 1 から `localStorage`**（state と永続化の概念を早期に同時習得）。外部化は Phase 3 以降で検討
+- **状態管理**: `App.jsx` 集約 → Phase 2 で Context API 検討（prop drilling が辛くなったら）
+- **ルーティング**: 入れない（ビュー切替は state ベース。React Router は Phase 3 以降で検討）
 - **テスト**: しない（テスト設計は別ジャンル `testing-and-quality/` で扱う）
 
 ---
 
 ## 3. Architecture
 
+### Phase 1（Kanban view）
+
 ```
-┌─────────────────────────────────────┐
-│ React (App.jsx)                     │
-│   ├─ Board                          │
-│   │   └─ Column × 3                 │
-│   │       └─ Card                   │
-│   └─ AddCardForm                    │
-└─────────────────────────────────────┘
+┌─────────────────────────────────────────────┐
+│ App.jsx (state 集約: cards / categories)    │
+│   ├─ Header                                 │
+│   │   ├─ AddCardForm                        │
+│   │   ├─ CategoryFilter                     │
+│   │   └─ ProgressBar (完了率)               │
+│   └─ Board                                  │
+│       └─ Column × 3                         │
+│           └─ Card (← → 移動 / × 削除)       │
+└─────────────────────────────────────────────┘
 ```
 
-Phase 1 はこの最小構成のみ。Context / Provider は使わない（学習負荷を上げないため）。state は `App.jsx` に集約し、子コンポーネントへ props で配る。
+state は `App.jsx` に集約し、子コンポーネントへ props で配る。Context / Provider は使わない（学習負荷を上げないため。Phase 2 で再検討）。
+
+### データモデル（Phase 1）
+
+```js
+// localStorage に保存される 1 件
+Card {
+  id: string,                          // 'card-' + Date.now()
+  title: string,
+  status: 'todo' | 'doing' | 'done',
+  category: string,                    // 'programming' | 'general' | 任意
+  createdAt: string,                   // ISO 8601
+  notes?: string                       // Phase 2 で活用
+}
+```
+
+Phase 2 で `parentId?: string` を追加してツリー化（ロードマップビュー）。
 
 ---
 
